@@ -1,8 +1,7 @@
 
 extern crate rand;
 
-use rand::{ OsRng, Rng };
-use std::error::Error;
+use rand::{ Rng };
 
 
 #[derive(Debug)]
@@ -14,7 +13,7 @@ pub struct DiceBag<T: Rolleable> {
     dice: Vec<T>,
 }
 
-struct RollResult(Vec<usize>);
+pub struct RollResult(Vec<usize>);
 
 pub trait Rolleable {
     fn roll(&self) -> usize;
@@ -26,3 +25,8 @@ impl Rolleable for Die<usize> {
     }
 }
 
+impl DiceBag<Die<usize>> {
+    pub fn roll(&self) -> RollResult {
+        RollResult(self.dice.iter().map(|x| x.roll()).collect())
+    }
+}
