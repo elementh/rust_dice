@@ -1,0 +1,7 @@
+[package]
+name = "rust_dice"
+version = "0.1.0"
+authors = ["Lucas Maximiliano Marino <lucasmmarino@icloud.com>"]
+
+[dependencies]
+rand = "0.5.5"
